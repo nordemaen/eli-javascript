@@ -3,7 +3,7 @@ const canvas = document.getElementById('chart');
 const ctx = canvas.getContext('2d');
 const ticker = document.querySelector('#ticker');
 
-// Hide the spinner
+// Toggle Element displays
 
 function initToggle() {
   toggleSpinner();
@@ -39,13 +39,13 @@ async function getStockPoint(symbol) {
     .then(data => {
       const stockDate = data.map(i => {
         const date = new Date(i.timestamp);
-        const stockDate = date.toLocaleString();
-        return { stockDate, value: i.value };
+        const stockDate = date.toLocaleString(); // Convert 
+        return { stockDate, value: i.value }; // Return custom object
       });
       console.log(`Stock Data: ${JSON.stringify(stockDate)}`);
       initToggle();
       drawLineChart(stockDate);
-      ticker.textContent = `$${symbol}`;
+      ticker.textContent = `$${symbol}`; // Update elem
     }).catch(err => { // Error Handling incase of in-valid stock.
       console.log(`Error occured during Fetch of Stock Points:\n${err}`);
       // location.reload(); // Possibly add another way to handle.
@@ -66,6 +66,10 @@ function drawLineChart(obj) {
   ctx.beginPath();
   ctx.strokeStyle = 'green';
 
+
+  // Loop through the object values
+  // Plot to canvas through cordinates
+
   for (let i = 0; i < vals.length; i++) {
     let x = (i / (vals.length - 1)) * chartWidth + 50;
     let y = chartHeight - ((vals[i] - min) / range) * chartHeight + 50;
@@ -75,30 +79,31 @@ function drawLineChart(obj) {
   ctx.stroke();
 
   // Timestamps
+  // Plot to canvas through cordinates
 
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = 'red';
   ctx.textAlign = 'center';
   for (let i = 0; i < dates.length; i++) {
-    let x = (i / (vals.length - 1)) * chartWidth + 50;
+    let x = (i / (vals.length - 1)) * chartWidth + 50; 
     let y = chartHeight + 100;
-    ctx.fillText(dates[i], x, y);
+    ctx.fillText(dates[i], x, y); // display text on the axis
   }
 }
 
 function drawLine (start, end, style) {
-  ctx.beginPath()
-  ctx.strokeStyle = style || 'black'
-  ctx.moveTo(...start)
-  ctx.lineTo(...end)
-  ctx.stroke()
+  ctx.beginPath();
+  ctx.strokeStyle = style || 'black';
+  ctx.moveTo(...start);
+  ctx.lineTo(...end);
+  ctx.stroke();
 }
 
 function drawTriangle (apex1, apex2, apex3) {
-  ctx.beginPath()
-  ctx.moveTo(...apex1)
-  ctx.lineTo(...apex2)
-  ctx.lineTo(...apex3)
-  ctx.fill()
+  ctx.beginPath();
+  ctx.moveTo(...apex1);
+  ctx.lineTo(...apex2);
+  ctx.lineTo(...apex3);
+  ctx.fill();
 }
 
 // Call functions
