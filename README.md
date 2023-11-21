@@ -60,15 +60,15 @@ Getting stock data has a **10% chance of failure** (by design). The application 
 
 ## Mission objectives
 
-* Make the spinner rotate using CSS3.
-* Query the backend for list of available stocks.
-* Query the backend for data about each stock.
-* Hide the spinner after all data is loaded.
-* Log to the console the result stock data in a structured way.
-* Fix backend (app.js) to return a meaningful error message when stock data cannot be retrieved (now the request just hangs!).
+* [x] Make the spinner rotate using CSS3.
+* [x] Query the backend for list of available stocks.
+* [x] Query the backend for data about each stock.
+* [x] Hide the spinner after all data is loaded.
+* [x] Log to the console the result stock data in a structured way.
+* [x] Fix backend (app.js) to return a meaningful error message when stock data cannot be retrieved (now the request just hangs!).
 
 Additional (if you have time)
-* Plot the stock data on the chart (as a line chart).
+* [x] Plot the stock data on the chart (as a line chart).
 
 ## Constraints
 
